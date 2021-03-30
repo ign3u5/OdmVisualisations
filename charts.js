@@ -3,15 +3,18 @@ const CHART_HEIGHT = 600;
 
 function availableSeasons(inputData) {
 	var data = new google.visualization.DataTable();
-	data.addColumn('string', 'Seasons');
-	data.addColumn('number', 'Total');
+	data.addColumn('string', 'Total');
+	data.addColumn('number', 'Seasons');
 	data.addRows(getDataFromArrayOfObjects(inputData));
+
+	console.log(`Availabe seasons data: ${JSON.stringify(getDataFromArrayOfObjects(inputData))}`);
 
 	var options = {'title':'Amount of TV show seasons available',
 					'width': CHART_WIDTH,
-					'height': CHART_HEIGHT};
+					'height': CHART_HEIGHT,
+					legend: 'none'};
 
-	var chart = new google.visualization.PieChart(document.getElementById('available_seasons'));
+	var chart = new google.visualization.ColumnChart(document.getElementById('available_seasons'));
 	chart.draw(data, options);
 }
 
@@ -56,21 +59,35 @@ function averageDuration(tvShows, movies) {
 				   'width':CHART_WIDTH,
 				   'height':CHART_HEIGHT};
 
-	var chart = new google.visualization.PieChart(document.getElementById('average_duration'));
+	var chart = new google.visualization.ColumnChart(document.getElementById('average_duration'));
 	chart.draw(data, options);
 }
 
 function moviesPerYear(inputData) {
 	var data = new google.visualization.DataTable();
-	data.addColumn('string', 'Year');
+	data.addColumn('number', 'Year');
 	data.addColumn('number', 'Total Movies');
-	data.addRows(getDataFromArrayOfObjects(inputData));
+	data.addRows(getIndexedDataFromArrayOfObjects(inputData));
 
 	var options = {'title':'Movies released each year',
-				   'width':CHART_WIDTH,
-				   'height':CHART_HEIGHT};
+					hAxis: {
+						title: 'Year',
+					},
+					vAxis: {
+						title: 'Number of movies',
+					},
+					trendlines: { 
+						0: {
+							type: 'exponential',
+							color: 'green',
+						} 
+					},
+				   	width:CHART_WIDTH,
+					height:CHART_HEIGHT,
+					legend: 'none',
+				};
 
-	var chart = new google.visualization.PieChart(document.getElementById('movies_per_year'));
+	var chart = new google.visualization.ScatterChart(document.getElementById('movies_per_year'));
 	chart.draw(data, options);
 }
 
@@ -133,6 +150,17 @@ function getDataFromArrayOfObjects(data)
 	{
 		var values = Object.values(data[index]);
 		rows.push([values[0], parseInt(values[1])]);
+	}
+	return rows;
+}
+
+function getIndexedDataFromArrayOfObjects(data)
+{
+	var rows = new Array();
+	for (var index in data)
+	{
+		var values = Object.values(data[index]);
+		rows.push([parseInt(values[0]), parseInt(values[1])]);
 	}
 	return rows;
 }

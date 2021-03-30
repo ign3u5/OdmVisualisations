@@ -84,6 +84,7 @@
 				//TODO: Filter movies/tv shows with the same director
 				topCountries(<?php echo json_encode($controller->GetTopCountries(10))?>);
 				//TODO: All movies from each country
+				$(`.visualization`).hide();
 			}
 
 			function showVisualizations(className) {
@@ -93,7 +94,6 @@
 			}
 
 			$(function(){
-				$(`.visualization`).hide();
 				$('#btn_show_type').on('click', function () {
 					showVisualizations('show_type_chart') });
 				$('#btn_tv_shows_per_year').on('click', function () { showVisualizations('tv_shows_per_year') });

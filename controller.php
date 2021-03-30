@@ -168,13 +168,14 @@
 
 		function GetAvailableSeasons() {
 			$sqlQuery = "SELECT 
-							count(tblShows.show_id) as 'Total', 
-							tblShows.duration as 'Seasons' 
+							tblShows.duration as 'Seasons', 
+							count(tblShows.show_id) as 'Total'
 						FROM tblShows 
 						INNER JOIN tblShowTypes 
 							on tblShows.type_id = tblShowTypes.type_id 
 						WHERE tblShowTypes.description = 'TV Show' 
-						GROUP BY tblShows.duration";
+						GROUP BY tblShows.duration
+						ORDER BY Total desc";
 
 			$statement = $this->connection->prepare($sqlQuery);
 			if ($statement->execute())
