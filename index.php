@@ -94,6 +94,7 @@
 			}
 
 			$(function(){
+				$(`.map`).hide();
 				$('#btn_show_type').on('click', function () {
 					showVisualizations('show_type_chart') });
 				$('#btn_tv_shows_per_year').on('click', function () { showVisualizations('tv_shows_per_year') });
