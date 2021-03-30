@@ -17,6 +17,7 @@
 	echo nl2br("\n\nAll country names: ".json_encode($controller->GetAllCountries()));
 	echo nl2br("\n\nFirst country: ".$controller->GetAllCountries()[0]);
 	echo nl2br("\n\nList of Afghan movies: ".json_encode($controller->GetAllCountryMovies("Afghanistan")));
+	echo nl2br("\n\nGet available seasons: ".json_encode($controller->GetAvailableSeasons()));
 ?>
 <html>
 	<head>
