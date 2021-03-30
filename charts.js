@@ -1,3 +1,6 @@
+const CHART_WIDTH = 800;
+const CHART_HEIGHT = 600;
+
 function availableSeasons(inputData) {
 	var data = new google.visualization.DataTable();
 	data.addColumn('string', 'Seasons');
@@ -5,8 +8,8 @@ function availableSeasons(inputData) {
 	data.addRows(getDataFromArrayOfObjects(inputData));
 
 	var options = {'title':'Amount of TV show seasons available',
-					'width': 800,
-					'height':600};
+					'width': CHART_WIDTH,
+					'height': CHART_HEIGHT};
 
 	var chart = new google.visualization.PieChart(document.getElementById('available_seasons'));
 	chart.draw(data, options);
@@ -19,8 +22,8 @@ function topCountries(inputData) {
 	data.addRows(getDataFromArrayOfObjects(inputData));
 
 	var options = {'title':'Top 10 countries',
-				  'width': 800,
-				  'height': 600};
+				  'width': CHART_WIDTH,
+				  'height': CHART_HEIGHT};
 
 	var chart = new google.visualization.PieChart(document.getElementById('top_countries'));
 	chart.draw(data, options);
@@ -33,8 +36,8 @@ function topActors(inputData) {
 	data.addRows(getDataFromArrayOfObjects(inputData));
 
 	var options = {'title':'Top 10 actors',
-				   'width':400,
-				   'height':300};
+				   'width':CHART_WIDTH,
+				   'height':CHART_HEIGHT};
 
 	var chart = new google.visualization.PieChart(document.getElementById('top_actors'));
 	chart.draw(data, options);
@@ -50,8 +53,8 @@ function averageDuration(tvShows, movies) {
 	]);
 
 	var options = {'title':'Average duration of a movie',
-				   'width':400,
-				   'height':300};
+				   'width':CHART_WIDTH,
+				   'height':CHART_HEIGHT};
 
 	var chart = new google.visualization.PieChart(document.getElementById('average_duration'));
 	chart.draw(data, options);
@@ -64,8 +67,8 @@ function moviesPerYear(inputData) {
 	data.addRows(getDataFromArrayOfObjects(inputData));
 
 	var options = {'title':'Movies released each year',
-				   'width':400,
-				   'height':300};
+				   'width':CHART_WIDTH,
+				   'height':CHART_HEIGHT};
 
 	var chart = new google.visualization.PieChart(document.getElementById('movies_per_year'));
 	chart.draw(data, options);
@@ -89,8 +92,8 @@ function tvShowsPerYear(inputData) {
 	});
 
 	var options = {'title':'TV Shows released each year',
-				   'width':400,
-				   'height':300};
+				   'width':CHART_WIDTH,
+				   'height':CHART_HEIGHT};
 	
 	var table = new google.visualization.ChartWrapper({
 		'chartType': 'Table',
@@ -116,8 +119,8 @@ function ratingsComparison(inputData) {
 	data.addRows(getDataFromArrayOfObjects(inputData));
 
 	var options = {'title':'Representation of the different ratings',
-				   'width':400,
-				   'height':300};
+				   'width':CHART_WIDTH,
+				   'height':CHART_HEIGHT};
 
 	var chart = new google.visualization.PieChart(document.getElementById('ratings_chart'));
 	chart.draw(data, options);
@@ -144,8 +147,8 @@ function showTypeComparison(tvShows, movies) {
 	]);
 
 	var options = {'title':'Representation of movies to tv shows',
-				   'width':400,
-				   'height':300};
+				   'width':CHART_WIDTH,
+				   'height':CHART_HEIGHT};
 
 	var chart = new google.visualization.PieChart(document.getElementById('show_type_chart'));
 	chart.draw(data, options);
