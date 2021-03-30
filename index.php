@@ -85,7 +85,7 @@
 				tvShowsPerYear(<?php echo json_encode($controller->GetTotalTvShowsForReleaseYears())?>);
 				moviesPerYear(<?php echo json_encode($controller->GetTotalMoviesForReleaseYears())?>);
 				averageDuration(<?php echo $controller->GetAverageDuration()['TV Show'] ?>, <?php echo $controller->GetAverageDuration()['Movie'] ?>);
-				availableSeasons(<?php echo $controller->GetAvailableSeasons()?>);
+				availableSeasons(<?php echo json_encode($controller->GetAvailableSeasons())?>);
 				topActors(<?php echo json_encode($controller->GetTopActors(10))?>);
 				topCountries(<?php echo json_encode($controller->GetTopCountries(10))?>);
 			}
