@@ -16,9 +16,10 @@ function drawCharts() {
 
 function availableSeasons(inputData) {
 	var data = new google.visualization.DataTable();
-	data.addColumn('string', 'Seasons');
+	data.addColumn('number', 'Seasons');
 	data.addColumn('number', 'Total');
 	data.addRows(getDataFromArrayOfObjects(inputData));
+	console.log(JSON.stringify(getDataFromArrayOfObjects(inputData)));
 
 	var options = {'title':'Amount of TV show seasons available',
 					'width': 800,
