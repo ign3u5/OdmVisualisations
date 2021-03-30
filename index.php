@@ -74,13 +74,16 @@
 			
 			function drawCharts() {
 				showTypeComparison(<?php echo $controller->GetTotalShowType()['TV Show'] ?>, <?php echo $controller->GetTotalShowType()['Movie'] ?>);
-				ratingsComparison(<?php echo json_encode($controller->GetTotalRatings())?>);
+				ratingsComparison(<?php echo json_encode($controller->GetTotalRatings())?>); //TODO: filterable by rating
 				tvShowsPerYear(<?php echo json_encode($controller->GetTotalTvShowsForReleaseYears())?>);
 				moviesPerYear(<?php echo json_encode($controller->GetTotalMoviesForReleaseYears())?>);
 				averageDuration(<?php echo $controller->GetAverageDuration()['TV Show'] ?>, <?php echo $controller->GetAverageDuration()['Movie'] ?>);
 				availableSeasons(<?php echo json_encode($controller->GetAvailableSeasons())?>);
+				//TODO: Date added compared to release year
 				topActors(<?php echo json_encode($controller->GetTopActors(10))?>);
+				//TODO: Filter movies/tv shows with the same director
 				topCountries(<?php echo json_encode($controller->GetTopCountries(10))?>);
+				//TODO: All movies from each country
 			}
 
 			function showVisualizations(className) {
