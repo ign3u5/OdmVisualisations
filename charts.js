@@ -19,7 +19,7 @@ function availableSeasons(inputData) {
 	data.addColumn('number', 'Seasons');
 	data.addColumn('number', 'Total');
 	data.addRows(getDataFromArrayOfObjects(inputData));
-	console.log(JSON.stringify(getDataFromArrayOfObjects(inputData)));
+	console.log(`Available seasons data: ${JSON.stringify(getDataFromArrayOfObjects(inputData))}`);
 
 	var options = {'title':'Amount of TV show seasons available',
 					'width': 800,
