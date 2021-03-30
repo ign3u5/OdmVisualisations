@@ -37,6 +37,9 @@ function topCountries(inputData) {
 	data.addColumn('number', 'Total');
 	data.addRows(getDataFromArrayOfObjects(inputData));
 
+	console.log(`Available seasons input data: ${JSON.stringify(inputData)}`);
+	console.log(`Available seasons formatted data: ${JSON.stringify(getDataFromArrayOfObjects(inputData))}`);
+
 	var options = {'title':'Top 10 countries',
 				  'width': 800,
 				  'height': 600};
