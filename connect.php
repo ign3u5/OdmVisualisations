@@ -17,9 +17,10 @@
 		
 		public function getConnection()
 		{
-			            $this->connection = null;
+			$this->connection = null;
             try{
-                $this->connection = new PDO("mysql:host=$this->server;dbname=$this->name", $this->user, $this->pass, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_TIMEOUT => 5, PDO::MYSQL_ATTR_FOUND_ROWS => true));
+                $this->connection = new PDO("mysql:host=$this->server;dbname=$this->name", $this->user, $this->pass,
+											array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_TIMEOUT => 5, PDO::MYSQL_ATTR_FOUND_ROWS => true));
             }
             catch (PDOException $ex)
             {

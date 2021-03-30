@@ -1,27 +1,8 @@
-google.charts.load('current', {'packages':['corechart']});
-			
-//Callback to run when API has loaded
-google.charts.setOnLoadCallback(drawCharts);
-
-function drawCharts() {
-	showTypeComparison();
-	ratingsComparison();
-	tvShowsPerYear();
-	moviesPerYear();
-	averageDuration();
-	topActors();
-	topCountries();
-	availableSeasons();
-}
-
 function availableSeasons(inputData) {
 	var data = new google.visualization.DataTable();
 	data.addColumn('string', 'Seasons');
 	data.addColumn('number', 'Total');
 	data.addRows(getDataFromArrayOfObjects(inputData));
-
-	console.log(`Available seasons input data: ${JSON.stringify(inputData)}`);
-	console.log(`Available seasons formatted data: ${JSON.stringify(getDataFromArrayOfObjects(inputData))}`);
 
 	var options = {'title':'Amount of TV show seasons available',
 					'width': 800,
@@ -36,9 +17,6 @@ function topCountries(inputData) {
 	data.addColumn('string', 'Country');
 	data.addColumn('number', 'Total');
 	data.addRows(getDataFromArrayOfObjects(inputData));
-
-	console.log(`Available seasons input data: ${JSON.stringify(inputData)}`);
-	console.log(`Available seasons formatted data: ${JSON.stringify(getDataFromArrayOfObjects(inputData))}`);
 
 	var options = {'title':'Top 10 countries',
 				  'width': 800,
@@ -173,7 +151,7 @@ function showTypeComparison(tvShows, movies) {
 	chart.draw(data, options);
 }
 
-function amChartsMap()
+function amChartsMap(countryInfo)
 {
 	$.getJSON("countryCodes.json", function(mapData) {
 		var map = am4core.create("map", am4maps.MapChart);
@@ -191,15 +169,12 @@ function amChartsMap()
 				seriesData.push(seriesDatum);
 			}
 		}
-		console.log(`Complete series data: ${seriesData}`);
 		polygonSeries.data = seriesData;
 
 		polygonSeries.useGeodata = true;
 		map.series.push(polygonSeries);
 
 		polygonSeries.data = seriesData;
-		console.log(polygonSeries.data);
-		console.log("Complete");
 
 		var tooltips = polygonSeries.mapPolygons.template;
 		tooltips.tooltipText = "{name}: {value}";

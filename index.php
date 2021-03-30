@@ -5,7 +5,6 @@
 
 <html>
 	<head>
-		
 		<script src="//cdn.amcharts.com/lib/4/core.js"></script>
 		<script src="//cdn.amcharts.com/lib/4/charts.js"></script>
 		<script src="//cdn.amcharts.com/lib/4/maps.js"></script>
@@ -69,15 +68,9 @@
 		<script>
 			google.charts.load('current', {'packages':['corechart', 'controls']});
 			
-			//Callback to run when API has loaded
 			google.charts.setOnLoadCallback(drawCharts);
-
-			//var mapData = [];
-			var countryInfoTest = [{"Name":"United Kingdom", "Total":123}, {"Name":"France", "Total":123}];
-			var countryInfo = <?php echo json_encode($controller->GetTopCountries(10)) ?> ;
-			console.log(`Country Info: ${JSON.stringify(countryInfo)}`);
 			
-			amChartsMap();
+			amChartsMap(<?php echo json_encode($controller->GetTopCountries(10)) ?>);
 			
 			function drawCharts() {
 				showTypeComparison(<?php echo $controller->GetTotalShowType()['TV Show'] ?>, <?php echo $controller->GetTotalShowType()['Movie'] ?>);
@@ -89,11 +82,13 @@
 				topActors(<?php echo json_encode($controller->GetTopActors(10))?>);
 				topCountries(<?php echo json_encode($controller->GetTopCountries(10))?>);
 			}
+
 			function showVisualizations(className) {
 				console.log(`Running show visualizations for ${className}`);
 				$(`.visualization`).hide();
 				$(`.${className}`).show();
 			}
+
 			$(function(){
 				$(`.visualization`).hide();
 				$('#btn_show_type').on('click', function () {
