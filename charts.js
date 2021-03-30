@@ -16,7 +16,7 @@ function drawCharts() {
 
 function availableSeasons(inputData) {
 	var data = new google.visualization.DataTable();
-	data.addColumn('number', 'Seasons');
+	data.addColumn('string', 'Seasons');
 	data.addColumn('number', 'Total');
 	data.addRows(getDataFromArrayOfObjects(inputData));
 
